@@ -1,0 +1,8 @@
+fn<-read.csv("./consumption.txt",skip=66637,nrows=2879,sep=";",header=TRUE)
+fn[[1]] <- strptime(paste(fn[[1]],fn[[2]]), "%d/%m/%Y %H:%M:%S")
+with(fn,plot(fn[[1]],fn[[7]],type="l",xlab="",ylab="Energy sub metering"))
+lines(fn[[1]],fn[[8]],type="l",col="red")
+lines(fn[[1]],fn[[9]],type="l",col="blue")
+legend("topright",lty=1,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+dev.copy(png,file="plot3.png",width=480, height=480)
+dev.off()

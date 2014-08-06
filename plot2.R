@@ -1,0 +1,6 @@
+fn<-read.csv("./consumption.txt",skip=66637,nrows=2879,sep=";",header=TRUE)
+fn[[3]]<-as.numeric(fn[[3]])
+fn[[1]] <- strptime(paste(fn[[1]],fn[[2]]), "%d/%m/%Y %H:%M:%S")
+with(fn,plot(fn[[1]],fn[[3]],type='l',xlab="",ylab="Global Active Power (kilowatts)"))
+dev.copy(png,file="plot2.png",width=480,height=480)
+dev.off()
